@@ -16,6 +16,7 @@ const INITIAL_STATE: SchoolFormData = {
   siswa_sd_advent: 0, siswa_sd_protestan: 0, siswa_sd_katolik: 0, siswa_sd_islam: 0, siswa_sd_budha: 0,
   siswa_smp_advent: 0, siswa_smp_protestan: 0, siswa_smp_katolik: 0, siswa_smp_islam: 0, siswa_smp_budha: 0,
   siswa_sma_advent: 0, siswa_sma_protestan: 0, siswa_sma_katolik: 0, siswa_sma_islam: 0, siswa_sma_budha: 0,
+  siswa_smk_advent: 0, siswa_smk_protestan: 0, siswa_smk_katolik: 0, siswa_smk_islam: 0, siswa_smk_budha: 0,
   guru_sd_sma: 0, guru_sd_d3: 0, guru_sd_s1: 0, guru_sd_s2: 0,
   guru_smp_sma: 0, guru_smp_d3: 0, guru_smp_s1: 0, guru_smp_s2: 0,
   guru_sma_sma: 0, guru_sma_d3: 0, guru_sma_s1: 0, guru_sma_s2: 0,
@@ -32,7 +33,7 @@ const INITIAL_STATE: SchoolFormData = {
   staf_smp_indeks: 0, staf_smp_tetap: 0, staf_smp_honor: 0,
   staf_sma_indeks: 0, staf_sma_tetap: 0, staf_sma_honor: 0,
   staf_smk_indeks: 0, staf_smk_tetap: 0, staf_smk_honor: 0,
-  kpa_sd: 0, kpa_smp: 0, kpa_sma: 0
+  kpa_sd: 0, kpa_smp: 0, kpa_sma: 0, kpa_smk: 0
 };
 
 const SchoolDataForm: React.FC<SchoolDataFormProps> = ({ onSubmit, isSubmitting }) => {
@@ -100,6 +101,7 @@ const SchoolDataForm: React.FC<SchoolDataFormProps> = ({ onSubmit, isSubmitting 
                 <th className={tableTh}>SD (1-6)</th>
                 <th className={tableTh}>SMP (7-9)</th>
                 <th className={tableTh}>SMA (10-12)</th>
+                <th className={tableTh}>SMK (10-12)</th>
               </tr>
             </thead>
             <tbody>
@@ -115,6 +117,7 @@ const SchoolDataForm: React.FC<SchoolDataFormProps> = ({ onSubmit, isSubmitting 
                   <td className={tableTd}><input type="number" name={`siswa_sd_${row.key}`} value={formData[`siswa_sd_${row.key}` as keyof SchoolFormData] as any} onChange={handleChange} className={statInput} /></td>
                   <td className={tableTd}><input type="number" name={`siswa_smp_${row.key}`} value={formData[`siswa_smp_${row.key}` as keyof SchoolFormData] as any} onChange={handleChange} className={statInput} /></td>
                   <td className={tableTd}><input type="number" name={`siswa_sma_${row.key}`} value={formData[`siswa_sma_${row.key}` as keyof SchoolFormData] as any} onChange={handleChange} className={statInput} /></td>
+                  <td className={tableTd}><input type="number" name={`siswa_smk_${row.key}`} value={formData[`siswa_smk_${row.key}` as keyof SchoolFormData] as any} onChange={handleChange} className={statInput} /></td>
                 </tr>
               ))}
             </tbody>
@@ -209,8 +212,8 @@ const SchoolDataForm: React.FC<SchoolDataFormProps> = ({ onSubmit, isSubmitting 
         <h4 className="font-bold text-emerald-800 mb-6 flex items-center text-lg">
           <i className="fas fa-users-cog mr-3"></i> 4. Jumlah KPA / Care Group
         </h4>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {['sd', 'smp', 'sma'].map(unit => (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {['sd', 'smp', 'sma', 'smk'].map(unit => (
             <div key={unit} className="flex flex-col">
               <label className="text-xs font-bold text-emerald-700 uppercase mb-2">Unit {unit.toUpperCase()}</label>
               <input type="number" name={`kpa_${unit}`} value={formData[`kpa_${unit}` as keyof SchoolFormData] as any} onChange={handleChange} className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 outline-none text-center bg-white shadow-inner" placeholder="0" />

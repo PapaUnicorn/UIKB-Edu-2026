@@ -14,7 +14,8 @@ const INITIAL_STATE: BaptismFormData = {
   tanggal_laporan: new Date().toISOString().split('T')[0],
   baptis_sd_total: 0,
   baptis_smp_total: 0,
-  baptis_sma_total: 0
+  baptis_sma_total: 0,
+  baptis_smk_total: 0
 };
 
 const BaptismForm: React.FC<BaptismFormProps> = ({ onSubmit, isSubmitting }) => {
@@ -65,7 +66,7 @@ const BaptismForm: React.FC<BaptismFormProps> = ({ onSubmit, isSubmitting }) => 
           <i className="fas fa-tint mr-3"></i> Total Baptisan Siswa
         </h4>
         <div className="space-y-6">
-          {['sd', 'smp', 'sma'].map(unit => (
+          {['sd', 'smp', 'sma', 'smk'].map(unit => (
             <div key={unit} className="flex items-center justify-between p-4 bg-blue-50 rounded-xl border border-blue-100">
               <span className="text-sm font-black text-blue-800 uppercase tracking-widest">Unit {unit.toUpperCase()}</span>
               <input type="number" name={`baptis_${unit}_total`} value={formData[`baptis_${unit}_total` as keyof BaptismFormData] as any} onChange={handleChange} className="w-40 px-6 py-3 border border-blue-200 rounded-xl focus:ring-4 focus:ring-blue-300 outline-none text-center font-bold text-lg bg-white shadow-inner" />

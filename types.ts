@@ -9,6 +9,7 @@ export interface SchoolFormData {
   siswa_sd_advent: number; siswa_sd_protestan: number; siswa_sd_katolik: number; siswa_sd_islam: number; siswa_sd_budha: number;
   siswa_smp_advent: number; siswa_smp_protestan: number; siswa_smp_katolik: number; siswa_smp_islam: number; siswa_smp_budha: number;
   siswa_sma_advent: number; siswa_sma_protestan: number; siswa_sma_katolik: number; siswa_sma_islam: number; siswa_sma_budha: number;
+  siswa_smk_advent: number; siswa_smk_protestan: number; siswa_smk_katolik: number; siswa_smk_islam: number; siswa_smk_budha: number;
   // Guru
   guru_sd_sma: number; guru_sd_d3: number; guru_sd_s1: number; guru_sd_s2: number;
   guru_smp_sma: number; guru_smp_d3: number; guru_smp_s1: number; guru_smp_s2: number;
@@ -31,6 +32,7 @@ export interface SchoolFormData {
   kpa_sd: number;
   kpa_smp: number;
   kpa_sma: number;
+  kpa_smk: number;
   timestamp?: string;
 }
 
@@ -42,6 +44,7 @@ export interface BaptismFormData {
   baptis_sd_total: number;
   baptis_smp_total: number;
   baptis_sma_total: number;
+  baptis_smk_total: number;
   timestamp?: string;
 }
 
