@@ -36,7 +36,7 @@ const Dashboard: React.FC = () => {
         const ws = XLSX.utils.json_to_sheet(filteredData);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-        XLSX.writeFile(wb, `Statistik_${view}_${new Date().toISOString().split('T')[0]}.xlsx`);
+        XLSX.writeFile(wb, `uikb-edu-statistics-${new Date().toISOString().split('T')[0]}.xlsx`);
     };
 
     useEffect(() => {
