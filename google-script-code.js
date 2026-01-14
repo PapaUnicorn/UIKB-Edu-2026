@@ -15,7 +15,9 @@ function doPost(e) {
       sheet = ss.insertSheet(sheetName);
     }
 
-    // Cek apakah sheet masih kosong (untuk buat Header)
+    // Cek apakah sheet masih kosong.
+    // Jika kosong (getLastRow() === 0), kita anggap belum ada header, jadi kita buat header.
+    // Jika sudah ada isinya (header sudah ada), blok ini akan dilewati.
     if (sheet.getLastRow() === 0) {
       var headers = [];
       if (data.type === 'school') {
