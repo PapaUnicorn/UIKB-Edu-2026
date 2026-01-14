@@ -1,6 +1,6 @@
 
 // --- KONFIGURASI ---
-var SPREADSHEET_ID = '1GS5bukiMhGia7xYVK2WrhnsDprhTHejJRiHNzUMpbGM';
+var SPREADSHEET_ID = '1_Jh6Ol1B4w-cIY9GQMOCsC44d8w9x3Uc4ti63WzA3ss';
 
 function doPost(e) {
   var ss = SpreadsheetApp.openById(SPREADSHEET_ID);

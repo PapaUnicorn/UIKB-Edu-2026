@@ -4,10 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 
-// Import Secret Icon. Note: Vite/Webpack will handle the image import.
-// If typescript complains, we might need a declaration file or use require.
-// For simplicity in this setup, assuming standard vite handling.
-import secretIcon from './src/assets/secret-icon.png';
+
 
 const App: React.FC = () => {
   return (
@@ -16,7 +13,7 @@ const App: React.FC = () => {
         {/* Header */}
         <header className="bg-slate-900 text-white shadow-xl sticky top-0 z-50">
           <div className="max-w-5xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <Link to="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
+            <Link to="/dashboard" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
               <div className="bg-emerald-500 p-2 rounded-lg shadow-inner">
                 <i className="fas fa-chart-line text-2xl"></i>
               </div>
@@ -25,13 +22,6 @@ const App: React.FC = () => {
                 <p className="text-[10px] text-emerald-400 font-bold tracking-widest uppercase">Pendidikan & Pelayanan</p>
               </div>
             </Link>
-
-            {/* Secret Button */}
-            <div className="absolute top-0 right-0 p-2 opacity-5 hover:opacity-100 transition-opacity duration-500 cursor-pointer">
-              <Link to="/dashboard">
-                <img src={secretIcon} alt="Secret" className="w-8 h-8 md:w-6 md:h-6 grayscale hover:grayscale-0" />
-              </Link>
-            </div>
           </div>
         </header>
 
