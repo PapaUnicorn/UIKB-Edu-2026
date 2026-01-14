@@ -16,18 +16,18 @@ const INITIAL_STATE: SchoolFormData = {
   siswa_sd_advent: 0, siswa_sd_protestan: 0, siswa_sd_katolik: 0, siswa_sd_islam: 0, siswa_sd_budha: 0,
   siswa_smp_advent: 0, siswa_smp_protestan: 0, siswa_smp_katolik: 0, siswa_smp_islam: 0, siswa_smp_budha: 0,
   siswa_sma_advent: 0, siswa_sma_protestan: 0, siswa_sma_katolik: 0, siswa_sma_islam: 0, siswa_sma_budha: 0,
-  guru_sd_d3: 0, guru_sd_s1: 0, guru_sd_s2: 0,
-  guru_smp_d3: 0, guru_smp_s1: 0, guru_smp_s2: 0,
-  guru_sma_d3: 0, guru_sma_s1: 0, guru_sma_s2: 0,
-  guru_smk_d3: 0, guru_smk_s1: 0, guru_smk_s2: 0,
+  guru_sd_sma: 0, guru_sd_d3: 0, guru_sd_s1: 0, guru_sd_s2: 0,
+  guru_smp_sma: 0, guru_smp_d3: 0, guru_smp_s1: 0, guru_smp_s2: 0,
+  guru_sma_sma: 0, guru_sma_d3: 0, guru_sma_s1: 0, guru_sma_s2: 0,
+  guru_smk_sma: 0, guru_smk_d3: 0, guru_smk_s1: 0, guru_smk_s2: 0,
   guru_sd_indeks: 0, guru_sd_tetap: 0, guru_sd_honor: 0,
   guru_smp_indeks: 0, guru_smp_tetap: 0, guru_smp_honor: 0,
   guru_sma_indeks: 0, guru_sma_tetap: 0, guru_sma_honor: 0,
   guru_smk_indeks: 0, guru_smk_tetap: 0, guru_smk_honor: 0,
-  staf_sd_sma: 0, staf_sd_d3: 0, staf_sd_s1: 0,
-  staf_smp_sma: 0, staf_smp_d3: 0, staf_smp_s1: 0,
-  staf_sma_sma: 0, staf_sma_d3: 0, staf_sma_s1: 0,
-  staf_smk_sma: 0, staf_smk_d3: 0, staf_smk_s1: 0,
+  staf_sd_sma: 0, staf_sd_d3: 0, staf_sd_s1: 0, staf_sd_s2: 0,
+  staf_smp_sma: 0, staf_smp_d3: 0, staf_smp_s1: 0, staf_smp_s2: 0,
+  staf_sma_sma: 0, staf_sma_d3: 0, staf_sma_s1: 0, staf_sma_s2: 0,
+  staf_smk_sma: 0, staf_smk_d3: 0, staf_smk_s1: 0, staf_smk_s2: 0,
   staf_sd_indeks: 0, staf_sd_tetap: 0, staf_sd_honor: 0,
   staf_smp_indeks: 0, staf_smp_tetap: 0, staf_smp_honor: 0,
   staf_sma_indeks: 0, staf_sma_tetap: 0, staf_sma_honor: 0,
@@ -141,7 +141,7 @@ const SchoolDataForm: React.FC<SchoolDataFormProps> = ({ onSubmit, isSubmitting 
             </thead>
             <tbody>
               <tr className="bg-emerald-50"><td colSpan={5} className="p-2 font-bold text-xs uppercase text-emerald-700 text-center">Tingkat Pendidikan</td></tr>
-              {['d3', 's1', 's2'].map(lvl => (
+              {['sma', 'd3', 's1', 's2'].map(lvl => (
                 <tr key={lvl}>
                   <td className="p-4 border-b text-sm font-medium text-slate-700 bg-slate-50/50">Tamatan {lvl.toUpperCase()}</td>
                   {['sd', 'smp', 'sma', 'smk'].map(unit => (
@@ -182,7 +182,7 @@ const SchoolDataForm: React.FC<SchoolDataFormProps> = ({ onSubmit, isSubmitting 
             </thead>
             <tbody>
               <tr className="bg-slate-100"><td colSpan={5} className="p-2 font-bold text-xs uppercase text-slate-600 text-center">Tingkat Pendidikan</td></tr>
-              {['sma', 'd3', 's1'].map(lvl => (
+              {['sma', 'd3', 's1', 's2'].map(lvl => (
                 <tr key={lvl}>
                   <td className="p-4 border-b text-sm font-medium text-slate-700 bg-slate-50/50">Tamatan {lvl.toUpperCase()}</td>
                   {['sd', 'smp', 'sma', 'smk'].map(unit => (
@@ -204,7 +204,7 @@ const SchoolDataForm: React.FC<SchoolDataFormProps> = ({ onSubmit, isSubmitting 
         </div>
       </section>
 
-      {/* Section 4: KPA (Moved from Baptism) */}
+      {/* Section 4: KPA */}
       <section className="p-6 bg-emerald-50 rounded-xl border border-emerald-200 shadow-sm">
         <h4 className="font-bold text-emerald-800 mb-6 flex items-center text-lg">
           <i className="fas fa-users-cog mr-3"></i> 4. Jumlah KPA / Care Group

@@ -2,7 +2,7 @@
 import { SchoolFormData, BaptismFormData } from "../types";
 
 // Replace with your actual Web App URL after re-deploying the script
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyXv9GbqFnNiMVcICow5jALgmnYzQMIhZbqfN_k6G3yeu521SwjWZwx8lttFSORGRo/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxc9uvy1fUXqftjjif1WyX_FrGeojG4msIsnIPqxjKVOSSArmi-wLZwJee5akb3av_B3g/exec';
 
 export const submitToGoogleSheets = async (data: SchoolFormData | BaptismFormData): Promise<boolean> => {
   try {
