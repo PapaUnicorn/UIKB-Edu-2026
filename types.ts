@@ -48,9 +48,7 @@ export interface BaptismFormData {
   timestamp?: string;
 }
 
-export interface FormData extends Partial<Omit<SchoolFormData, 'type'>>, Partial<Omit<BaptismFormData, 'type'>> {
-  type?: 'school' | 'baptism';
-}
+
 
 export interface FormStatus {
   loading: boolean;

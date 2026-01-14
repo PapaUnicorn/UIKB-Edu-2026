@@ -4,12 +4,12 @@ var SPREADSHEET_ID = '1GS5bukiMhGia7xYVK2WrhnsDprhTHejJRiHNzUMpbGM';
 
 function doPost(e) {
   var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-  
+
   try {
     var data = JSON.parse(e.postData.contents);
     var sheetName = (data.type === 'baptism') ? 'BAPTISM' : 'SCHOOLDATA';
     var sheet = ss.getSheetByName(sheetName);
-    
+
     // Buat sheet jika belum ada
     if (!sheet) {
       sheet = ss.insertSheet(sheetName);
@@ -45,7 +45,7 @@ function doPost(e) {
         ];
       } else {
         headers = [
-          "Timestamp", "Daerah", "Nama Sekolah", "Tanggal Laporan", 
+          "Timestamp", "Daerah", "Nama Sekolah", "Tanggal Laporan",
           "Total Baptis SD", "Total Baptis SMP", "Total Baptis SMA", "Total Baptis SMK"
         ];
       }
@@ -95,14 +95,49 @@ function doPost(e) {
         data.baptis_smk_total
       ];
     }
-    
+
     sheet.appendRow(row);
-    
-    return ContentService.createTextOutput(JSON.stringify({result: 'success', sheet: sheetName}))
+
+    return ContentService.createTextOutput(JSON.stringify({ result: 'success', sheet: sheetName }))
       .setMimeType(ContentService.MimeType.JSON);
-      
-  } catch(err) {
-    return ContentService.createTextOutput(JSON.stringify({result: 'error', error: err.toString()}))
+
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ result: 'error', error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet(e) {
+  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheetName = e.parameter.sheetName || 'SCHOOLDATA'; // Default to SCHOOLDATA if not specified
+  var sheet = ss.getSheetByName(sheetName);
+
+  if (!sheet) {
+    return ContentService.createTextOutput(JSON.stringify({ result: 'error', error: 'Sheet not found: ' + sheetName }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  try {
+    var range = sheet.getDataRange();
+    var values = range.getValues();
+    var headers = values.shift(); // Get headers
+
+    var data = values.map(function (row) {
+      var obj = {};
+      row.forEach(function (value, index) {
+        // Simple header normalization (optional, but good for JSON keys)
+        // var key = headers[index].toLowerCase().replace(/ /g, '_'); 
+        // Using original headers as keys for now to match user request
+        obj[headers[index]] = value;
+      });
+      return obj;
+    });
+
+    return ContentService.createTextOutput(JSON.stringify({ result: 'success', data: data }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ result: 'error', error: err.toString() }))
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
