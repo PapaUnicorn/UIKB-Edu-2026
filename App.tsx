@@ -13,7 +13,7 @@ const App: React.FC = () => {
         {/* Header */}
         <header className="bg-slate-900 text-white shadow-xl sticky top-0 z-50">
           <div className="max-w-5xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <Link to="/dashboard" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
+            <Link to="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
               <div className="bg-emerald-500 p-2 rounded-lg shadow-inner">
                 <i className="fas fa-chart-line text-2xl"></i>
               </div>
@@ -22,6 +22,16 @@ const App: React.FC = () => {
                 <p className="text-[10px] text-emerald-400 font-bold tracking-widest uppercase">Pendidikan & Pelayanan</p>
               </div>
             </Link>
+
+            {/* Navigation Menu */}
+            <nav className="flex items-center space-x-6">
+              <Link to="/" className="text-sm font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-colors">
+                <i className="fas fa-home mr-2"></i>Home
+              </Link>
+              <Link to="/dashboard" className="text-sm font-bold text-slate-300 hover:text-white uppercase tracking-wider transition-colors">
+                <i className="fas fa-columns mr-2"></i>Dashboard
+              </Link>
+            </nav>
           </div>
         </header>
 
